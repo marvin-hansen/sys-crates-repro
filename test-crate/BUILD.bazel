@@ -23,7 +23,5 @@ rust_binary(
         # External crates
         "//thirdparty/crates:mimalloc",
         "//thirdparty/crates:lz4-sys",
-        "//thirdparty/crates:diesel",
-        "//thirdparty/crates:diesel_migrations",
-    ],
+         ],
 )
