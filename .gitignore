@@ -4,6 +4,7 @@
 /target/
 /target/*
 /target/*.*
+/test-crate/target/
 
 # Bazel stuff
 

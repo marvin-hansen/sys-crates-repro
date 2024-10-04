@@ -1,0 +1,83 @@
+bazel build //...
+INFO: Analyzed 2 targets (1 packages loaded, 2 targets configured).
+INFO: Found 2 targets...
+ERROR: /Users/marvin/RustroverProjects/forks/sys-crates-repro/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/BUILD.bazel:88:19: Running Cargo build script lz4-sys failed: (Exit 1): cargo_build_script_runner failed: error executing CargoBuildScriptRun command (from target //thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0:_bs)
+  (cd /private/var/tmp/_bazel_marvin/32a31730b3bb4129d41351ed64887532/sandbox/darwin-sandbox/430/execroot/_main && \
+  exec env - \
+    AR=external/toolchains_llvm~~llvm~llvm_toolchain/bin/libtool \
+    CARGO_CRATE_NAME=lz4_sys \
+    CARGO_ENCODED_RUSTFLAGS='--sysroot=${pwd}/bazel-out/darwin_arm64-fastbuild/bin/external/rules_rust~~rust~rust_darwin_aarch64__aarch64-apple-darwin__stable_tools/rust_toolchain\x1f--cap-lints=allow' \
+    CARGO_MANIFEST_DIR=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs-.runfiles/_main/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0 \
+    CARGO_MANIFEST_LINKS=lz4 \
+    CARGO_PKG_NAME=lz4-sys \
+    CARGO_PKG_VERSION=1.11.1+lz4-1.10.0 \
+    CARGO_PKG_VERSION_MAJOR=1 \
+    CARGO_PKG_VERSION_MINOR=11 \
+    CARGO_PKG_VERSION_PATCH=1 \
+    CARGO_PKG_VERSION_PRE='' \
+    CC=external/toolchains_llvm~~llvm~llvm_toolchain/bin/cc_wrapper.sh \
+    CFLAGS='-U_FORTIFY_SOURCE --target=aarch64-apple-macosx -U_FORTIFY_SOURCE -fstack-protector -fno-omit-frame-pointer -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -mmacosx-version-min=15.0 --sysroot=${pwd}//Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -no-canonical-prefixes -Wno-builtin-macro-redefined -D__DATE__="redacted" -D__TIMESTAMP__="redacted" -D__TIME__="redacted" -fdebug-prefix-map=external/toolchains_llvm~~llvm~llvm_toolchain_llvm/=__bazel_toolchain_llvm_repo__/' \
+    CXX=external/toolchains_llvm~~llvm~llvm_toolchain/bin/cc_wrapper.sh \
+    CXXFLAGS='-U_FORTIFY_SOURCE --target=aarch64-apple-macosx -U_FORTIFY_SOURCE -fstack-protector -fno-omit-frame-pointer -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -std=c++17 -stdlib=libc++ -Xclang -fno-cxx-modules -mmacosx-version-min=15.0 --sysroot=${pwd}//Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -no-canonical-prefixes -Wno-builtin-macro-redefined -D__DATE__="redacted" -D__TIMESTAMP__="redacted" -D__TIME__="redacted" -fdebug-prefix-map=external/toolchains_llvm~~llvm~llvm_toolchain_llvm/=__bazel_toolchain_llvm_repo__/' \
+    DEBUG=true \
+    HOST=aarch64-apple-darwin \
+    LD=external/toolchains_llvm~~llvm~llvm_toolchain/bin/cc_wrapper.sh \
+    LDFLAGS='-mmacosx-version-min=15.0 -no-canonical-prefixes -fobjc-link-runtime --target=aarch64-apple-macosx -lm -no-canonical-prefixes -headerpad_max_install_names -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib -lc++ -lc++abi -Bdynamic -Lexternal/toolchains_llvm~~llvm~llvm_toolchain_llvm/lib -Bstatic -lunwind -lSystem -lresolv --sysroot=${pwd}//Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk' \
+    NUM_JOBS=1 \
+    OPT_LEVEL=0 \
+    PATH=/Users/marvin/Library/Caches/bazelisk/downloads/sha256/79e4d2401b1c969d2b57babd0c50b0ca61b719689d8b029c919525744f52872c/bin:/Users/marvin/.cargo/bin:/Users/marvin/.rd/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/Users/marvin/.cargo/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/MacGPG2/bin:/usr/local/go/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/marvin/.orbstack/bin \
+    PROFILE=debug \
+    RUSTC=bazel-out/darwin_arm64-fastbuild/bin/external/rules_rust~~rust~rust_darwin_aarch64__aarch64-apple-darwin__stable_tools/rust_toolchain/bin/rustc \
+    TARGET=aarch64-apple-darwin \
+    ZERO_AR_DATE=1 \
+  bazel-out/darwin_arm64-opt-exec/bin/external/rules_rust~/cargo/cargo_build_script_runner/cargo_build_script_runner '--script=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs-' '--links=lz4' '--out_dir=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.out_dir' '--env_out=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.env' '--flags_out=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.flags' '--link_flags=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.linkflags' '--link_search_paths=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.linksearchpaths' '--dep_env_out=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.depenv' '--stdout=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.stdout.log' '--stderr=bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.stderr.log' '--rundir=')
+# Configuration: 5ed47370792235af43d8c357149f4585b816dc4e1621ab3aee78c91c160a8220
+# Execution platform: @@platforms//host:host
+
+Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+Build script process failed with exit code 1
+--stdout:
+OUT_DIR = Some(/private/var/tmp/_bazel_marvin/32a31730b3bb4129d41351ed64887532/sandbox/darwin-sandbox/430/execroot/_main/bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.out_dir)
+TARGET = Some(aarch64-apple-darwin)
+HOST = Some(aarch64-apple-darwin)
+cargo:rerun-if-env-changed=CC_aarch64-apple-darwin
+CC_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=CC_aarch64_apple_darwin
+CC_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = Some(/private/var/tmp/_bazel_marvin/32a31730b3bb4129d41351ed64887532/sandbox/darwin-sandbox/430/execroot/_main/external/toolchains_llvm~~llvm~llvm_toolchain/bin/cc_wrapper.sh)
+RUSTC_WRAPPER = None
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some(true)
+cargo:rerun-if-env-changed=MACOSX_DEPLOYMENT_TARGET
+MACOSX_DEPLOYMENT_TARGET = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64-apple-darwin
+CFLAGS_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64_apple_darwin
+CFLAGS_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = Some(-U_FORTIFY_SOURCE --target=aarch64-apple-macosx -U_FORTIFY_SOURCE -fstack-protector -fno-omit-frame-pointer -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -mmacosx-version-min=15.0 --sysroot=/private/var/tmp/_bazel_marvin/32a31730b3bb4129d41351ed64887532/sandbox/darwin-sandbox/430/execroot/_main//Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -no-canonical-prefixes -Wno-builtin-macro-redefined -D__DATE__="redacted" -D__TIMESTAMP__="redacted" -D__TIME__="redacted" -fdebug-prefix-map=external/toolchains_llvm~~llvm~llvm_toolchain_llvm/=__bazel_toolchain_llvm_repo__/)
+cargo:rerun-if-env-changed=CC_SHELL_ESCAPED_FLAGS
+CC_SHELL_ESCAPED_FLAGS = None
+cargo:warning=liblz4/lib/lz4.c:224:11: fatal error: 'stdlib.h' file not found
+cargo:warning=  224 | # include <stdlib.h>   /* malloc, calloc, free */
+cargo:warning=      |           ^~~~~~~~~~
+cargo:warning=1 error generated.
+
+--stderr:
+
+
+error occurred: Command env -u IPHONEOS_DEPLOYMENT_TARGET "/private/var/tmp/_bazel_marvin/32a31730b3bb4129d41351ed64887532/sandbox/darwin-sandbox/430/execroot/_main/external/toolchains_llvm~~llvm~llvm_toolchain/bin/cc_wrapper.sh" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "--target=arm64-apple-darwin" "-mmacosx-version-min=15.0" "-U_FORTIFY_SOURCE" "--target=aarch64-apple-macosx" "-U_FORTIFY_SOURCE" "-fstack-protector" "-fno-omit-frame-pointer" "-fcolor-diagnostics" "-Wall" "-Wthread-safety" "-Wself-assign" "-mmacosx-version-min=15.0" "--sysroot=/private/var/tmp/_bazel_marvin/32a31730b3bb4129d41351ed64887532/sandbox/darwin-sandbox/430/execroot/_main//Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk" "-no-canonical-prefixes" "-Wno-builtin-macro-redefined" "-D__DATE__=\"redacted\"" "-D__TIMESTAMP__=\"redacted\"" "-D__TIME__=\"redacted\"" "-fdebug-prefix-map=external/toolchains_llvm~~llvm~llvm_toolchain_llvm/=__bazel_toolchain_llvm_repo__/" "-o" "/private/var/tmp/_bazel_marvin/32a31730b3bb4129d41351ed64887532/sandbox/darwin-sandbox/430/execroot/_main/bazel-out/darwin_arm64-fastbuild/bin/thirdparty/crates/lz4-sys-1.11.1-lz4-1.10.0/_bs.out_dir/4ab73f6e54c185d1-lz4.o" "-c" "liblz4/lib/lz4.c" with args cc_wrapper.sh did not execute successfully (status code exit status: 1).
+
+
+
+Target //test-crate:test-crate failed to build
+INFO: Elapsed time: 0.972s, Critical Path: 0.71s
+INFO: 6 processes: 6 internal.
+ERROR: Build did NOT complete successfully
