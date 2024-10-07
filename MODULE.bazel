@@ -39,8 +39,7 @@ git_override(
 # LLVM Versions and platforms
 # https://github.com/bazel-contrib/toolchains_llvm/blob/master/toolchain/internal/llvm_distributions.bzl
 LLVM_VERSIONS = {
-    "": "19.0.1",  # Linux X86 / Ubuntu 20.04 on CI
-    # "darwin-aarch64": "19.1.0",  # Apple Silicon Macs
+    "": "16.0.0",  # Linux X86
 }
 
 # Sysroot for LLVM
