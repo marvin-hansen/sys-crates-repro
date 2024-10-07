@@ -5,10 +5,6 @@
 ## https://bazel.build/docs/best-practices#bazelrc-file
 ###############################################################################
 
-# Required on windows
-# https://bazel.build/reference/command-line-reference#flag--enable_platform_specific_config
-common --enable_platform_specific_config
-
 ###############################################################################
 ## Build configuration
 ###############################################################################
@@ -38,6 +34,9 @@ test --verbose_failures
 # Enable Bzlmod for every Bazel command
 common --enable_bzlmod
 
+# Allow + in repo names for Bazel 8
+# common --incompatible_use_plus_in_repo_names
+
 # Write build outputs in a platform-specific directory;
 # avoid outputs being wiped and rewritten when switching between platforms.
 common --experimental_platform_in_output_dir
@@ -58,6 +57,9 @@ common --noslim_profile
 common --experimental_profile_include_target_label
 common --experimental_profile_include_primary_output
 
+# Required for cargo_build_script support before Bazel 7
+common --incompatible_merge_fixed_and_default_shell_env
+
 ###############################################################################
 ## Cross compilation configuration
 ###############################################################################
@@ -65,48 +67,27 @@ common --experimental_profile_include_primary_output
 # Debug toolchain resolution
 # build --toolchain_resolution_debug='@bazel_tools//tools/cpp:toolchain_type
 
+# Required to support cross compilation from different host systems i.e Mac and Linux
+# https://bazel.build/reference/command-line-reference#flag--enable_platform_specific_config
+common --enable_platform_specific_config
+
 # Required to resolve C/C++ toolchain.
 # https://github.com/bazel-contrib/musl-toolchain?tab=readme-ov-file#setup
 build --incompatible_enable_cc_toolchain_resolution
 
-# Required for cargo_build_script support before Bazel 7
-build --incompatible_merge_fixed_and_default_shell_env
+# Build targets for different hosts
+build:macos --extra_execution_platforms=//build/platforms:darwin-aarch64
+build:linux --extra_execution_platforms=//build/platforms:linux-x86_64
 
-# This may causes error on RBE that are hard to debug and cannot be replicated locally.
-# If set to true, do not mount root, only mount whats provided with sandbox_add_mount_pair.
-# Input files will be hardlinked to the sandbox instead of symlinked to from the sandbox.
-# If action input files are located on a filesystem different from the sandbox, then the input files will be copied instead.
-# https://bazel.build/reference/command-line-reference#flag--experimental_use_hermetic_linux_sandbox
-# common --experimental_use_hermetic_linux_sandbox
+# Enable cross compilation for extra platforms.
+# See //build/platforms/BUILD.bazel for definitions.
+build --extra_execution_platforms=//build/platforms:linux-x86_64
+build --extra_execution_platforms=//build/platforms:linux-aarch64
 
-###############################################################################
-## Remote configuration
-###############################################################################
-
-# Flags shared across remote configs
-common:remote-shared --jobs=120
-common:remote-shared --remote_timeout=600
-common:remote-shared --remote_download_minimal
-common:remote-shared --experimental_remote_cache_compression
-common:remote-shared --verbose_failures
-
-# Avoid inflating blobs smaller than 100 bytes with ZSTD compression.
-common:remote-shared --experimental_remote_cache_compression_threshold=100
-
-# Remote host platform
-# https://github.com/buildbuddy-io/buildbuddy/blob/8579ca30f1a1f401ed8279d99d9b47ec5637873f/.bazelrc#L30
-common:remote-shared --host_platform=//build/platforms:linux_x86_64_remote
-common:remote-shared --extra_execution_platforms=//build/platforms:linux_x86_64_remote
-
-# Remote cross compilation
-common:remote-shared --extra_execution_platforms=//build/platforms:linux_arm64_musl
-common:remote-shared --extra_execution_platforms=//build/platforms:linux_x86_64_musl
-
-# Build with --config=remote to enable Remote Build Execution (RBE)
-common:remote --config=remote-shared
-common:remote --remote_cache=grpcs://remote.buildbuddy.io
-common:remote --remote_executor=remote.buildbuddy.io
-common:remote --remote_header=x-buildbuddy-api-key=4Ml6AhYICvGtZ3XhqafP
+# Add extra toolchains for cross compilation
+# See MODULE.bazel for details.
+build --extra_toolchains=@llvm_toolchain_x86_with_sysroot//:cc-toolchain-x86_64-linux
+build --extra_toolchains=@llvm_toolchain_aarch64_with_sysroot//:cc-toolchain-aarch64-linux
 
 ###############################################################################
 ## Custom user flags

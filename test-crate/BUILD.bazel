@@ -1,27 +1,42 @@
 load("@rules_rust//rust:defs.bzl", "rust_binary")
 
 rust_binary(
-    name =  "test-crate",
+    name = "hello_world_host",
     srcs = glob([
         "src/**",
     ]),
     crate_root = "src/main.rs",
-    rustc_flags = select({
-        "//:release": [
-            "-Clto=true",
-            "-Ccodegen-units=1",
-            "-Cpanic=abort",
-            "-Copt-level=3",
-            "-Cstrip=symbols",
-        ],
-        "//conditions:default": [
-            "-Copt-level=0",
-        ],
-    }),
-    visibility = ["//visibility:public"],
     deps = [
         # External crates
         "//thirdparty/crates:mimalloc",
         "//thirdparty/crates:lz4-sys",
-         ],
+    ],
+)
+
+rust_binary(
+    name = "hello_world_x86_64",
+    srcs = glob([
+        "src/**",
+    ]),
+    crate_root = "src/main.rs",
+    platform = "//build/platforms:linux-x86_64",
+    deps = [
+        # External crates
+        "//thirdparty/crates:mimalloc",
+        "//thirdparty/crates:lz4-sys",
+    ],
+)
+
+rust_binary(
+    name = "hello_world_aarch64",
+    srcs = glob([
+        "src/**",
+    ]),
+    crate_root = "src/main.rs",
+    platform = "//build/platforms:linux-aarch64",
+    deps = [
+        # External crates
+        "//thirdparty/crates:mimalloc",
+        "//thirdparty/crates:lz4-sys",
+    ],
 )
