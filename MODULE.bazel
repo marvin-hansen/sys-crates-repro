@@ -7,11 +7,15 @@ module(name = "repro")
 
 # https://github.com/bazelbuild/rules_rust/releases
 # This version and all prior build fine
-# bazel_dep(name = "rules_rust", version = "0.51.0")
+# bazel_dep(name = "rules_rust", version = "0.52.1")
+git_override(
+    module_name = "rules_rust",
+    commit = "ebdeb0cc9b8e051779e00b37ec0f93fab9ba8dd8",
+    remote = "https://github.com/bazelbuild/rules_rust",
+)
 
 # Version 0.52.0 breaks the build
 bazel_dep(name = "rules_rust", version = "0.52.0")
-
 
 # https://github.com/bazelbuild/platforms/releases
 bazel_dep(name = "platforms", version = "0.0.10")
@@ -40,8 +44,8 @@ git_override(
 # LLVM Versions and platforms
 # https://github.com/bazel-contrib/toolchains_llvm/blob/master/toolchain/internal/llvm_distributions.bzl
 LLVM_VERSIONS = {
-    "": "16.0.0",  # Linux X86 / Ubuntu 20.04 on CI
-    "darwin-aarch64": "19.1.0",  # Apple Silicon Macs
+    "": "19.0.1",  # Linux X86 / Ubuntu 20.04 on CI
+    # "darwin-aarch64": "19.1.0",  # Apple Silicon Macs
 }
 
 # Sysroot for LLVM
